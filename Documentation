@@ -1,0 +1,39 @@
+
+-Functionality Tree Description:
+
+    To work with the quadtree data type, I used a structure with 4 nodes, where
+"left" represents the leftmost node, "left_mid" represents the middle left
+node, "right_mid" represents the middle right node, and "right" represents
+the rightmost node. Additionally, I introduced a "levels" field, which 
+represents the level of each node in the tree, the node type (0 - uncolored,
+1 - colored), and an RGB structure representing the colors.
+
+-Requirement 1 Description:
+
+    To fulfill this requirement, I read from a file into a matrix of structures,
+with each structure representing a color. Furthermore, I recursively create
+the tree, using the formulas specified in the requirement and an index that
+represents the top left corner of each matrix after the splits. Thus, I use
+a queue in which I will insert each node from the tree, which I will traverse
+and count the colored nodes (of type 1). Moreover, in the same traversal, I
+will calculate the height of the tree by finding the maximum in the "levels"
+field of each node and the minimum distance from the root to the first colored
+node to determine the size of the largest matrix.
+
+-Requirement 2 Description:
+
+    To fulfill this requirement, I use the tree created as in the previous
+requirement and a queue in which I will also insert each node. Simultaneously
+with the insertion, I write the content of each node from the tree into a
+binary file (the node type and its colors if the type is 1).
+
+-Requirement 3 Description:
+
+    To fulfill this requirement, I read to the end of the binary file into a
+"tree" type node, and then I insert it into a queue. After this operation, I will
+traverse that queue and insert each created node into my tree one by one, but I
+will take care with a second queue to remember the uncolored nodes. Therefore,
+I will repeat this operation either until the initial queue is empty or the
+queue of type 0 nodes is empty. Thus, I managed to build my tree and then call
+a recursive function, similar to the algorithm explained in requirement 1, to
+build the final matrix, which I will then write to the file.
